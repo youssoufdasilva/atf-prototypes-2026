@@ -9,38 +9,287 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as PublicationsRouteImport } from './routes/publications'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as ConsultingRouteImport } from './routes/consulting'
+import { Route as ChaptersRouteImport } from './routes/chapters'
+import { Route as ChallengeRouteImport } from './routes/challenge'
+import { Route as ArticlesRouteImport } from './routes/articles'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as NewsArticleIdRouteImport } from './routes/news.$articleId'
+import { Route as CountriesCountryRouteImport } from './routes/countries.$country'
 
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicationsRoute = PublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultingRoute = ConsultingRouteImport.update({
+  id: '/consulting',
+  path: '/consulting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChaptersRoute = ChaptersRouteImport.update({
+  id: '/chapters',
+  path: '/chapters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChallengeRoute = ChallengeRouteImport.update({
+  id: '/challenge',
+  path: '/challenge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesRoute = ArticlesRouteImport.update({
+  id: '/articles',
+  path: '/articles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsArticleIdRoute = NewsArticleIdRouteImport.update({
+  id: '/$articleId',
+  path: '/$articleId',
+  getParentRoute: () => NewsRoute,
+} as any)
+const CountriesCountryRoute = CountriesCountryRouteImport.update({
+  id: '/countries/$country',
+  path: '/countries/$country',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/articles': typeof ArticlesRoute
+  '/challenge': typeof ChallengeRoute
+  '/chapters': typeof ChaptersRoute
+  '/consulting': typeof ConsultingRoute
+  '/news': typeof NewsRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/publications': typeof PublicationsRoute
+  '/research': typeof ResearchRoute
+  '/team': typeof TeamRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/countries/$country': typeof CountriesCountryRoute
+  '/news/$articleId': typeof NewsArticleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/articles': typeof ArticlesRoute
+  '/challenge': typeof ChallengeRoute
+  '/chapters': typeof ChaptersRoute
+  '/consulting': typeof ConsultingRoute
+  '/news': typeof NewsRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/publications': typeof PublicationsRoute
+  '/research': typeof ResearchRoute
+  '/team': typeof TeamRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/countries/$country': typeof CountriesCountryRoute
+  '/news/$articleId': typeof NewsArticleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/articles': typeof ArticlesRoute
+  '/challenge': typeof ChallengeRoute
+  '/chapters': typeof ChaptersRoute
+  '/consulting': typeof ConsultingRoute
+  '/news': typeof NewsRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/publications': typeof PublicationsRoute
+  '/research': typeof ResearchRoute
+  '/team': typeof TeamRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/countries/$country': typeof CountriesCountryRoute
+  '/news/$articleId': typeof NewsArticleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/articles'
+    | '/challenge'
+    | '/chapters'
+    | '/consulting'
+    | '/news'
+    | '/privacy-policy'
+    | '/publications'
+    | '/research'
+    | '/team'
+    | '/terms-of-service'
+    | '/countries/$country'
+    | '/news/$articleId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/articles'
+    | '/challenge'
+    | '/chapters'
+    | '/consulting'
+    | '/news'
+    | '/privacy-policy'
+    | '/publications'
+    | '/research'
+    | '/team'
+    | '/terms-of-service'
+    | '/countries/$country'
+    | '/news/$articleId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/articles'
+    | '/challenge'
+    | '/chapters'
+    | '/consulting'
+    | '/news'
+    | '/privacy-policy'
+    | '/publications'
+    | '/research'
+    | '/team'
+    | '/terms-of-service'
+    | '/countries/$country'
+    | '/news/$articleId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ArticlesRoute: typeof ArticlesRoute
+  ChallengeRoute: typeof ChallengeRoute
+  ChaptersRoute: typeof ChaptersRoute
+  ConsultingRoute: typeof ConsultingRoute
+  NewsRoute: typeof NewsRouteWithChildren
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  PublicationsRoute: typeof PublicationsRoute
+  ResearchRoute: typeof ResearchRoute
+  TeamRoute: typeof TeamRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
+  CountriesCountryRoute: typeof CountriesCountryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publications': {
+      id: '/publications'
+      path: '/publications'
+      fullPath: '/publications'
+      preLoaderRoute: typeof PublicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consulting': {
+      id: '/consulting'
+      path: '/consulting'
+      fullPath: '/consulting'
+      preLoaderRoute: typeof ConsultingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapters': {
+      id: '/chapters'
+      path: '/chapters'
+      fullPath: '/chapters'
+      preLoaderRoute: typeof ChaptersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/challenge': {
+      id: '/challenge'
+      path: '/challenge'
+      fullPath: '/challenge'
+      preLoaderRoute: typeof ChallengeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles': {
+      id: '/articles'
+      path: '/articles'
+      fullPath: '/articles'
+      preLoaderRoute: typeof ArticlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +297,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/$articleId': {
+      id: '/news/$articleId'
+      path: '/$articleId'
+      fullPath: '/news/$articleId'
+      preLoaderRoute: typeof NewsArticleIdRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/countries/$country': {
+      id: '/countries/$country'
+      path: '/countries/$country'
+      fullPath: '/countries/$country'
+      preLoaderRoute: typeof CountriesCountryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface NewsRouteChildren {
+  NewsArticleIdRoute: typeof NewsArticleIdRoute
+}
+
+const NewsRouteChildren: NewsRouteChildren = {
+  NewsArticleIdRoute: NewsArticleIdRoute,
+}
+
+const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ArticlesRoute: ArticlesRoute,
+  ChallengeRoute: ChallengeRoute,
+  ChaptersRoute: ChaptersRoute,
+  ConsultingRoute: ConsultingRoute,
+  NewsRoute: NewsRouteWithChildren,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  PublicationsRoute: PublicationsRoute,
+  ResearchRoute: ResearchRoute,
+  TeamRoute: TeamRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
+  CountriesCountryRoute: CountriesCountryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

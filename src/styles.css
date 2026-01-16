@@ -1,24 +1,30 @@
-@import 'tailwindcss';
-
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-body {
-  @apply m-0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
+/* ATF Theme Variables - dynamically set via ThemeContext */
 :root {
+  /* Default theme values (Version A: Pan-African) */
+  --theme-background: #ffffff;
+  --theme-background-secondary: #f8f9fa;
+  --theme-foreground: #231f20;
+  --theme-foreground-muted: #6b7280;
+  --theme-card: #ffffff;
+  --theme-card-foreground: #231f20;
+  --theme-border: #e5e7eb;
+  --theme-accent: #51b847;
+  --theme-accent-foreground: #ffffff;
+  --theme-font-heading: "Poppins", sans-serif;
+  --theme-font-body: "Inter", sans-serif;
+
+  /* ATF Brand Colors */
+  --atf-green: #51b847;
+  --atf-yellow: #fcba2f;
+  --atf-red: #ee4035;
+  --atf-dark: #231f20;
+
+  /* shadcn/ui variables - keep for component compatibility */
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -126,6 +132,23 @@ code {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ATF Theme Colors for Tailwind */
+  --color-theme-bg: var(--theme-background);
+  --color-theme-bg-secondary: var(--theme-background-secondary);
+  --color-theme-fg: var(--theme-foreground);
+  --color-theme-fg-muted: var(--theme-foreground-muted);
+  --color-theme-card: var(--theme-card);
+  --color-theme-card-fg: var(--theme-card-foreground);
+  --color-theme-border: var(--theme-border);
+  --color-theme-accent: var(--theme-accent);
+  --color-theme-accent-fg: var(--theme-accent-foreground);
+
+  /* ATF Brand Colors for Tailwind */
+  --color-atf-green: var(--atf-green);
+  --color-atf-yellow: var(--atf-yellow);
+  --color-atf-red: var(--atf-red);
+  --color-atf-dark: var(--atf-dark);
 }
 
 @layer base {
@@ -133,6 +156,108 @@ code {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply m-0;
+    font-family: var(--theme-font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--theme-background);
+    color: var(--theme-foreground);
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
+
+  /* Hide default scrollbar but keep functionality */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128, 128, 128, 0.4) transparent;
+  }
+
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.4);
+    border-radius: 4px;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.6);
+  }
+
+  /* Prevent layout shift from scrollbar */
+  html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Theme typography utilities */
+.font-heading {
+  font-family: var(--theme-font-heading);
+}
+
+.font-body {
+  font-family: var(--theme-font-body);
+}
+
+/* Smooth transitions for theme changes */
+.theme-transition,
+header,
+footer,
+nav,
+.card,
+button,
+a {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Dark theme scrollbar */
+.dark html::-webkit-scrollbar-thumb,
+html.dark::-webkit-scrollbar-thumb {
+  background: rgba(200, 200, 200, 0.3);
+}
+
+.dark html::-webkit-scrollbar-thumb:hover,
+html.dark::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 200, 200, 0.5);
+}
+
+/* Kente-inspired geometric patterns for Version A */
+.pattern-kente {
+  background-image:
+    linear-gradient(45deg, var(--atf-green) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--atf-yellow) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--atf-red) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--theme-accent) 75%);
+  background-size: 40px 40px;
+  background-position:
+    0 0,
+    0 20px,
+    20px -20px,
+    -20px 0px;
+  opacity: 0.1;
+}
+
+/* Gradient background for Version B */
+.gradient-tech {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+/* Organic blob shapes for Version D */
+.blob-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }
