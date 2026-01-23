@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/Logo";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -210,11 +211,7 @@ function MobileNav() {
             style={{ borderColor: theme.border }}
           >
             <Link to="/" onClick={() => setIsOpen(false)}>
-              <img
-                src="/atf-assets/atf-logo-vector.svg"
-                alt="ATF"
-                className="h-8 w-auto"
-              />
+              <Logo size="sm" />
             </Link>
           </div>
 
@@ -306,11 +303,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img
-              src="/atf-assets/atf-logo-vector.svg"
-              alt="ATF"
-              className="h-10 lg:h-12 w-auto"
-            />
+            <Logo size="md" />
             <span
               className="hidden sm:block font-heading font-bold text-lg"
               style={{ color: theme.foreground }}

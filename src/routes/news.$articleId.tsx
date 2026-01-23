@@ -81,7 +81,7 @@ const newsArticles: Record<
 };
 
 function NewsArticlePage() {
-  const { theme, accentColor, version } = useTheme();
+  const { theme, accentColor } = useTheme();
   const { articleId } = Route.useParams();
   const article = newsArticles[articleId];
 

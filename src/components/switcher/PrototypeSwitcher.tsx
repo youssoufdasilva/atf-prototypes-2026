@@ -6,6 +6,7 @@ import {
   Palette,
   MessageSquare,
   Settings2,
+  Wand2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -13,8 +14,9 @@ import { useFeedback } from "@/contexts/FeedbackContext";
 import { VersionSelector } from "./VersionSelector";
 import { AccentPicker } from "./AccentPicker";
 import { FeedbackPanel } from "./FeedbackPanel";
+import { ThemeBuilder } from "./ThemeBuilder";
 
-type PanelMode = "switcher" | "feedback";
+type PanelMode = "switcher" | "builder" | "feedback";
 
 export function PrototypeSwitcher() {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -87,7 +89,7 @@ export function PrototypeSwitcher() {
               >
                 <button
                   onClick={() => setPanelMode("switcher")}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm transition-colors"
+                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-sm transition-colors"
                   style={{
                     backgroundColor:
                       panelMode === "switcher"
@@ -100,11 +102,28 @@ export function PrototypeSwitcher() {
                   }}
                 >
                   <Palette className="w-4 h-4" />
-                  <span>Theme</span>
+                  <span>Presets</span>
+                </button>
+                <button
+                  onClick={() => setPanelMode("builder")}
+                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-sm transition-colors relative"
+                  style={{
+                    backgroundColor:
+                      panelMode === "builder"
+                        ? theme.backgroundSecondary
+                        : "transparent",
+                    color:
+                      panelMode === "builder"
+                        ? theme.accent
+                        : theme.foregroundMuted,
+                  }}
+                >
+                  <Wand2 className="w-4 h-4" />
+                  <span>Custom</span>
                 </button>
                 <button
                   onClick={() => setPanelMode("feedback")}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm transition-colors relative"
+                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-sm transition-colors relative"
                   style={{
                     backgroundColor:
                       panelMode === "feedback"
@@ -128,15 +147,15 @@ export function PrototypeSwitcher() {
               </div>
 
               {/* Panel Content */}
-              <div className="p-4 max-h-[400px] overflow-y-auto">
-                {panelMode === "switcher" ? (
+              <div className="p-4 max-h-[500px] overflow-y-auto">
+                {panelMode === "switcher" && (
                   <div className="space-y-4">
                     <VersionSelector />
                     <AccentPicker />
                   </div>
-                ) : (
-                  <FeedbackPanel />
                 )}
+                {panelMode === "builder" && <ThemeBuilder />}
+                {panelMode === "feedback" && <FeedbackPanel />}
               </div>
             </motion.div>
           )}

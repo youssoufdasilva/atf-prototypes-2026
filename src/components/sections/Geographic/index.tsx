@@ -4,6 +4,7 @@ import { Building, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { AfricaMap } from "./AfricaMap";
+import { TimelineView } from "./TimelineView";
 
 interface Country {
   id: string;
@@ -208,9 +209,20 @@ function MapView() {
   );
 }
 
+function renderGeographicView(style: string) {
+  switch (style) {
+    case "interactiveMap":
+      return <MapView />;
+    case "timeline":
+      return <TimelineView />;
+    case "cardGrid":
+    default:
+      return <CardGridView />;
+  }
+}
+
 export function Geographic() {
-  const { version, theme, accentColor } = useTheme();
-  const useMap = version === "B";
+  const { theme, accentColor } = useTheme();
 
   return (
     <section className="py-20" style={{ backgroundColor: theme.background }}>
@@ -223,7 +235,7 @@ export function Geographic() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {version === "C" && (
+          {theme.heroStyle === "photo" && (
             <div
               className="w-16 h-1 mx-auto mb-6"
               style={{ backgroundColor: accentColor }}
@@ -244,8 +256,8 @@ export function Geographic() {
           </p>
         </motion.div>
 
-        {/* Map or card grid view */}
-        {useMap ? <MapView /> : <CardGridView />}
+        {/* Render view based on theme config */}
+        {renderGeographicView(theme.geographicStyle)}
       </div>
     </section>
   );

@@ -117,8 +117,8 @@ function NewsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid md:grid-cols-2 gap-6 mb-8"
           >
-            {featuredArticles.map((article, index) => (
-              <Link key={article.id} to={`/news/${article.id}`}>
+            {featuredArticles.map((article) => (
+              <Link key={article.id} to="/news/$articleId" params={{ articleId: article.id }}>
                 <article
                   className={`p-6 h-full ${version === "D" ? "rounded-2xl" : "rounded-xl"} hover:shadow-lg transition-shadow cursor-pointer`}
                   style={{
@@ -175,8 +175,8 @@ function NewsPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="space-y-4"
           >
-            {otherArticles.map((article, index) => (
-              <Link key={article.id} to={`/news/${article.id}`}>
+            {otherArticles.map((article) => (
+              <Link key={article.id} to="/news/$articleId" params={{ articleId: article.id }}>
                 <article
                   className={`p-5 ${version === "D" ? "rounded-xl" : "rounded-lg"} hover:shadow-md transition-shadow cursor-pointer flex items-center gap-4`}
                   style={{

@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { FeedbackProvider } from "@/contexts/FeedbackContext";
 import { PrototypeSwitcher } from "@/components/switcher/PrototypeSwitcher";
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Footer } from "@/components/sections/Footer";
 
 import type { Version } from "@/lib/themes";
 
@@ -18,11 +18,10 @@ export type RootSearchParams = {
 export const Route = createRootRoute({
   validateSearch: (search: Record<string, unknown>): RootSearchParams => {
     const version = search.version as string | undefined;
-    const validVersions = ["A", "B", "C", "D"];
+    // Allow any string version - validation happens in ThemeContext
+    // This enables custom themes (E, F, G, etc.) and preset versions (A-D)
     return {
-      version: validVersions.includes(version || "")
-        ? (version as Version)
-        : undefined,
+      version: version || undefined,
     };
   },
   component: () => (

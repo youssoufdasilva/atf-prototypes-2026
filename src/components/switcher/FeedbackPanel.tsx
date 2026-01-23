@@ -7,12 +7,10 @@ import { useTheme } from "@/contexts/ThemeContext";
 import {
   useFeedback,
   feedbackElements,
+  feedbackOptions,
   type FeedbackElementId,
   type Rating,
 } from "@/contexts/FeedbackContext";
-import { themes, type Version } from "@/lib/themes";
-
-const versions: Version[] = ["A", "B", "C", "D"];
 
 function StarRating({
   value,
@@ -59,19 +57,21 @@ function FeedbackItem({
   name: string;
 }) {
   const { theme } = useTheme();
-  const { feedback, setRating, setPreferredVersion, setNotes } = useFeedback();
+  const { feedback, setRating, setPreferredOption, setNotes } = useFeedback();
   const [isExpanded, setIsExpanded] = useState(false);
 
   const elementFeedback = feedback.elements[elementId] || {
     rating: null,
-    preferredVersion: null,
+    preferredOption: null,
     notes: "",
   };
 
   const hasData =
     elementFeedback.rating ||
-    elementFeedback.preferredVersion ||
+    elementFeedback.preferredOption ||
     elementFeedback.notes.trim();
+
+  const options = feedbackOptions[elementId] || [];
 
   return (
     <div
@@ -126,41 +126,43 @@ function FeedbackItem({
                 />
               </div>
 
-              {/* Preferred Version */}
-              <div>
-                <label
-                  className="text-xs mb-1 block"
-                  style={{ color: theme.foregroundMuted }}
-                >
-                  Preferred Version
-                </label>
-                <div className="flex gap-1">
-                  {versions.map((v) => (
-                    <button
-                      key={v}
-                      onClick={() =>
-                        setPreferredVersion(
-                          elementId,
-                          elementFeedback.preferredVersion === v ? null : v
-                        )
-                      }
-                      className="px-2 py-1 text-xs rounded transition-colors"
-                      style={{
-                        backgroundColor:
-                          elementFeedback.preferredVersion === v
-                            ? theme.accent
-                            : theme.backgroundSecondary,
-                        color:
-                          elementFeedback.preferredVersion === v
-                            ? theme.accentForeground
-                            : theme.foregroundMuted,
-                      }}
-                    >
-                      {v}: {themes[v].name}
-                    </button>
-                  ))}
+              {/* Preferred Option - only show if there are options */}
+              {options.length > 0 && (
+                <div>
+                  <label
+                    className="text-xs mb-1 block"
+                    style={{ color: theme.foregroundMuted }}
+                  >
+                    Preferred Option
+                  </label>
+                  <div className="flex flex-wrap gap-1">
+                    {options.map((opt) => (
+                      <button
+                        key={opt.value}
+                        onClick={() =>
+                          setPreferredOption(
+                            elementId,
+                            elementFeedback.preferredOption === opt.value ? null : opt.value
+                          )
+                        }
+                        className="px-2 py-1 text-xs rounded transition-colors"
+                        style={{
+                          backgroundColor:
+                            elementFeedback.preferredOption === opt.value
+                              ? theme.accent
+                              : theme.backgroundSecondary,
+                          color:
+                            elementFeedback.preferredOption === opt.value
+                              ? theme.accentForeground
+                              : theme.foregroundMuted,
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Notes */}
               <div>

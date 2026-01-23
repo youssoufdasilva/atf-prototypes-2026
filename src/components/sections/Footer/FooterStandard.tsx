@@ -1,49 +1,16 @@
 import { Link } from "@tanstack/react-router";
-import {
-  Facebook,
-  Twitter,
-  Linkedin,
-  Youtube,
-  Mail,
-  MapPin,
-} from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Logo } from "@/components/ui/Logo";
+import { footerLinks, socialLinks, contactInfo, Mail, MapPin } from "./footerData";
 
-const footerLinks = {
-  programs: [
-    { label: "ATF Consulting", href: "/consulting" },
-    { label: "ATF Challenge", href: "/challenge" },
-    { label: "ATF Chapters", href: "/chapters" },
-  ],
-  about: [
-    { label: "Our Story", href: "/about" },
-    { label: "Team", href: "/team" },
-    { label: "News", href: "/news" },
-  ],
-  resources: [
-    { label: "Articles", href: "/articles" },
-    { label: "Research", href: "/research" },
-    { label: "Publications", href: "/publications" },
-  ],
-};
-
-const socialLinks = [
-  { icon: Facebook, href: "#social-facebook", label: "Facebook" },
-  { icon: Twitter, href: "#social-twitter", label: "Twitter" },
-  { icon: Linkedin, href: "#social-linkedin", label: "LinkedIn" },
-  { icon: Youtube, href: "#social-youtube", label: "YouTube" },
-];
-
-export function Footer() {
-  const { theme, accentColor, version } = useTheme();
+export function FooterStandard() {
+  const { theme, accentColor, isDarkTheme } = useTheme();
 
   return (
     <footer
       className="border-t"
       style={{
-        backgroundColor:
-          version === "B" ? theme.background : theme.backgroundSecondary,
+        backgroundColor: isDarkTheme ? theme.background : theme.backgroundSecondary,
         borderColor: theme.border,
       }}
     >
@@ -67,9 +34,7 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className={`w-10 h-10 flex items-center justify-center transition-colors ${
-                    version === "D" ? "rounded-full" : "rounded-lg"
-                  }`}
+                  className="w-10 h-10 flex items-center justify-center transition-colors rounded-lg"
                   style={{
                     backgroundColor: `${accentColor}15`,
                     color: accentColor,
@@ -139,12 +104,12 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:info@atfglobal.org"
+                  href={`mailto:${contactInfo.email}`}
                   className="flex items-center gap-2 text-sm"
                   style={{ color: theme.foregroundMuted }}
                 >
                   <Mail className="w-4 h-4" style={{ color: accentColor }} />
-                  info@atfglobal.org
+                  {contactInfo.email}
                 </a>
               </li>
               <li>
@@ -156,7 +121,7 @@ export function Footer() {
                     className="w-4 h-4 mt-0.5"
                     style={{ color: accentColor }}
                   />
-                  Accra, Ghana
+                  {contactInfo.location}
                 </span>
               </li>
             </ul>

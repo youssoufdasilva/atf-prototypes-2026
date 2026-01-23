@@ -4,13 +4,19 @@ import {
   type ReactNode,
 } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { type Version, themes } from "@/lib/themes";
 
 export type Rating = 1 | 2 | 3 | 4 | 5 | null;
 
+// Preferred option types for each element
+export type HeroLayoutPreference = "centered" | "split" | "fullWidth" | null;
+export type HeroBackgroundPreference = "patterns" | "gradient" | "photo" | "organic" | null;
+export type FooterPreference = "standard" | "minimal" | "expanded" | "dark" | null;
+export type GeographicPreference = "cardGrid" | "interactiveMap" | "timeline" | null;
+export type LogoPreference = "standard" | "negSpace" | null;
+
 export interface ElementFeedback {
   rating: Rating;
-  preferredVersion: Version | null;
+  preferredOption: string | null;
   notes: string;
 }
 
@@ -19,26 +25,66 @@ export interface FeedbackState {
   generalNotes: string;
 }
 
-// Elements that can be rated
+// Simplified elements that map 1:1 with customization options
 export const feedbackElements = {
-  "hero-style": "Hero Background Style",
-  "hero-animation": "Hero Animation Level",
-  "cta-placement": "CTA Button Placement",
-  "nav-style": "Navigation Design",
-  "programs-display": "Programs Section Layout",
-  "geographic-display": "Geographic Section Style",
-  "color-palette": "Overall Color Palette",
-  typography: "Typography Choices",
-  animations: "Animation/Motion Style",
+  "hero-layout": "Hero Layout",
+  "hero-background": "Hero Background",
+  colors: "Color Scheme",
+  typography: "Typography",
+  logo: "Logo Variant",
+  footer: "Footer Style",
+  geographic: "Geographic Section",
   overall: "Overall Impression",
 } as const;
+
+// Options for each element (used in FeedbackPanel)
+export const feedbackOptions: Record<string, { value: string; label: string }[]> = {
+  "hero-layout": [
+    { value: "centered", label: "Centered" },
+    { value: "split", label: "Split" },
+    { value: "fullWidth", label: "Full Width" },
+  ],
+  "hero-background": [
+    { value: "patterns", label: "Patterns" },
+    { value: "gradient", label: "Gradient" },
+    { value: "photo", label: "Photo" },
+    { value: "organic", label: "Organic" },
+  ],
+  colors: [
+    { value: "green", label: "Green (Pan-African)" },
+    { value: "cyan", label: "Cyan (Tech)" },
+    { value: "terracotta", label: "Terracotta (Warm)" },
+  ],
+  typography: [
+    { value: "poppins", label: "Poppins + Inter" },
+    { value: "spaceGrotesk", label: "Space Grotesk + Inter" },
+    { value: "playfair", label: "Playfair + Source Sans" },
+    { value: "dmSerif", label: "DM Serif + Nunito" },
+  ],
+  logo: [
+    { value: "standard", label: "Standard" },
+    { value: "negSpace", label: "Negative Space" },
+  ],
+  footer: [
+    { value: "standard", label: "Standard" },
+    { value: "minimal", label: "Minimal" },
+    { value: "expanded", label: "Expanded" },
+    { value: "dark", label: "Dark" },
+  ],
+  geographic: [
+    { value: "cardGrid", label: "Card Grid" },
+    { value: "interactiveMap", label: "Interactive Map" },
+    { value: "timeline", label: "Timeline" },
+  ],
+  overall: [], // No specific options for overall impression
+};
 
 export type FeedbackElementId = keyof typeof feedbackElements;
 
 interface FeedbackContextType {
   feedback: FeedbackState;
   setRating: (elementId: FeedbackElementId, rating: Rating) => void;
-  setPreferredVersion: (elementId: FeedbackElementId, version: Version | null) => void;
+  setPreferredOption: (elementId: FeedbackElementId, option: string | null) => void;
   setNotes: (elementId: FeedbackElementId, notes: string) => void;
   setGeneralNotes: (notes: string) => void;
   exportToMarkdown: () => string;
@@ -60,7 +106,7 @@ export function FeedbackProvider({ children }: { children: ReactNode }) {
   );
 
   const getElementFeedback = (elementId: FeedbackElementId): ElementFeedback => {
-    return feedback.elements[elementId] || { rating: null, preferredVersion: null, notes: "" };
+    return feedback.elements[elementId] || { rating: null, preferredOption: null, notes: "" };
   };
 
   const updateElement = (
@@ -83,8 +129,8 @@ export function FeedbackProvider({ children }: { children: ReactNode }) {
     updateElement(elementId, { rating });
   };
 
-  const setPreferredVersion = (elementId: FeedbackElementId, version: Version | null) => {
-    updateElement(elementId, { preferredVersion: version });
+  const setPreferredOption = (elementId: FeedbackElementId, option: string | null) => {
+    updateElement(elementId, { preferredOption: option });
   };
 
   const setNotes = (elementId: FeedbackElementId, notes: string) => {
@@ -101,7 +147,7 @@ export function FeedbackProvider({ children }: { children: ReactNode }) {
 
   const hasAnyFeedback =
     Object.values(feedback.elements).some(
-      (el) => el.rating !== null || el.preferredVersion !== null || el.notes.trim() !== ""
+      (el) => el.rating !== null || el.preferredOption !== null || el.notes.trim() !== ""
     ) || feedback.generalNotes.trim() !== "";
 
   const exportToMarkdown = (): string => {
@@ -123,13 +169,13 @@ export function FeedbackProvider({ children }: { children: ReactNode }) {
     (Object.entries(feedbackElements) as [FeedbackElementId, string][]).forEach(
       ([id, name]) => {
         const el = feedback.elements[id];
-        if (el && (el.rating || el.preferredVersion || el.notes.trim())) {
+        if (el && (el.rating || el.preferredOption || el.notes.trim())) {
           lines.push(`### ${name}`);
           lines.push("");
-          if (el.preferredVersion) {
-            lines.push(
-              `- **Preferred Version**: ${el.preferredVersion} (${themes[el.preferredVersion].name})`
-            );
+          if (el.preferredOption) {
+            const options = feedbackOptions[id] || [];
+            const optionLabel = options.find((o) => o.value === el.preferredOption)?.label || el.preferredOption;
+            lines.push(`- **Preferred**: ${optionLabel}`);
           }
           if (el.rating) {
             lines.push(`- **Rating**: ${el.rating}/5`);
@@ -155,7 +201,7 @@ export function FeedbackProvider({ children }: { children: ReactNode }) {
   const value: FeedbackContextType = {
     feedback,
     setRating,
-    setPreferredVersion,
+    setPreferredOption,
     setNotes,
     setGeneralNotes,
     exportToMarkdown,

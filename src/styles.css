@@ -162,6 +162,10 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--theme-background);
     color: var(--theme-foreground);
+  }
+
+  /* Only enable theme transitions after initial hydration to prevent flash */
+  body.theme-transitions-enabled {
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
@@ -211,14 +215,14 @@ code {
   font-family: var(--theme-font-body);
 }
 
-/* Smooth transitions for theme changes */
-.theme-transition,
-header,
-footer,
-nav,
-.card,
-button,
-a {
+/* Smooth transitions for theme changes - only after hydration */
+.theme-transitions-enabled .theme-transition,
+.theme-transitions-enabled header,
+.theme-transitions-enabled footer,
+.theme-transitions-enabled nav,
+.theme-transitions-enabled .card,
+.theme-transitions-enabled button,
+.theme-transitions-enabled a {
   transition:
     background-color 0.3s ease,
     color 0.3s ease,

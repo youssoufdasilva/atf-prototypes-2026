@@ -1,50 +1,22 @@
 import { Link } from "@tanstack/react-router";
-import {
-  Facebook,
-  Twitter,
-  Linkedin,
-  Youtube,
-  Mail,
-  MapPin,
-} from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Logo } from "@/components/ui/Logo";
+import { footerLinks, socialLinks, contactInfo, Mail, MapPin } from "./footerData";
 
-const footerLinks = {
-  programs: [
-    { label: "ATF Consulting", href: "/consulting" },
-    { label: "ATF Challenge", href: "/challenge" },
-    { label: "ATF Chapters", href: "/chapters" },
-  ],
-  about: [
-    { label: "Our Story", href: "/about" },
-    { label: "Team", href: "/team" },
-    { label: "News", href: "/news" },
-  ],
-  resources: [
-    { label: "Articles", href: "/articles" },
-    { label: "Research", href: "/research" },
-    { label: "Publications", href: "/publications" },
-  ],
-};
+export function FooterDark() {
+  const { accentColor } = useTheme();
 
-const socialLinks = [
-  { icon: Facebook, href: "#social-facebook", label: "Facebook" },
-  { icon: Twitter, href: "#social-twitter", label: "Twitter" },
-  { icon: Linkedin, href: "#social-linkedin", label: "LinkedIn" },
-  { icon: Youtube, href: "#social-youtube", label: "YouTube" },
-];
-
-export function Footer() {
-  const { theme, accentColor, version } = useTheme();
+  // Dark footer always uses dark colors
+  const darkBg = "#0a0a0f";
+  const darkFg = "#f0f0f5";
+  const darkFgMuted = "#9ca3af";
+  const darkBorder = "#2d2d3a";
 
   return (
     <footer
       className="border-t"
       style={{
-        backgroundColor:
-          version === "B" ? theme.background : theme.backgroundSecondary,
-        borderColor: theme.border,
+        backgroundColor: darkBg,
+        borderColor: darkBorder,
       }}
     >
       <div className="container mx-auto px-6 py-16">
@@ -52,11 +24,16 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <Logo size="lg" />
+              {/* Force neg space logo for dark footer */}
+              <img
+                src="/atf-assets/atf logo neg space copy.png"
+                alt="ATF"
+                className="h-12 w-auto"
+              />
             </Link>
             <p
               className="text-sm leading-relaxed mb-6 max-w-sm"
-              style={{ color: theme.foregroundMuted }}
+              style={{ color: darkFgMuted }}
             >
               The African Technology Forum champions technology-driven solutions
               for Africa's development challenges through consulting, innovation
@@ -67,11 +44,9 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className={`w-10 h-10 flex items-center justify-center transition-colors ${
-                    version === "D" ? "rounded-full" : "rounded-lg"
-                  }`}
+                  className="w-10 h-10 flex items-center justify-center transition-colors rounded-lg"
                   style={{
-                    backgroundColor: `${accentColor}15`,
+                    backgroundColor: `${accentColor}20`,
                     color: accentColor,
                   }}
                   aria-label={social.label}
@@ -86,7 +61,7 @@ export function Footer() {
           <div>
             <h4
               className="font-heading font-semibold mb-4"
-              style={{ color: theme.foreground }}
+              style={{ color: darkFg }}
             >
               Programs
             </h4>
@@ -96,7 +71,7 @@ export function Footer() {
                   <Link
                     to={link.href}
                     className="text-sm transition-colors hover:underline"
-                    style={{ color: theme.foregroundMuted }}
+                    style={{ color: darkFgMuted }}
                   >
                     {link.label}
                   </Link>
@@ -109,7 +84,7 @@ export function Footer() {
           <div>
             <h4
               className="font-heading font-semibold mb-4"
-              style={{ color: theme.foreground }}
+              style={{ color: darkFg }}
             >
               About
             </h4>
@@ -119,7 +94,7 @@ export function Footer() {
                   <Link
                     to={link.href}
                     className="text-sm transition-colors hover:underline"
-                    style={{ color: theme.foregroundMuted }}
+                    style={{ color: darkFgMuted }}
                   >
                     {link.label}
                   </Link>
@@ -132,31 +107,31 @@ export function Footer() {
           <div>
             <h4
               className="font-heading font-semibold mb-4"
-              style={{ color: theme.foreground }}
+              style={{ color: darkFg }}
             >
               Contact
             </h4>
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:info@atfglobal.org"
+                  href={`mailto:${contactInfo.email}`}
                   className="flex items-center gap-2 text-sm"
-                  style={{ color: theme.foregroundMuted }}
+                  style={{ color: darkFgMuted }}
                 >
                   <Mail className="w-4 h-4" style={{ color: accentColor }} />
-                  info@atfglobal.org
+                  {contactInfo.email}
                 </a>
               </li>
               <li>
                 <span
                   className="flex items-start gap-2 text-sm"
-                  style={{ color: theme.foregroundMuted }}
+                  style={{ color: darkFgMuted }}
                 >
                   <MapPin
                     className="w-4 h-4 mt-0.5"
                     style={{ color: accentColor }}
                   />
-                  Accra, Ghana
+                  {contactInfo.location}
                 </span>
               </li>
             </ul>
@@ -166,9 +141,9 @@ export function Footer() {
         {/* Bottom bar */}
         <div
           className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4"
-          style={{ borderColor: theme.border }}
+          style={{ borderColor: darkBorder }}
         >
-          <p className="text-sm" style={{ color: theme.foregroundMuted }}>
+          <p className="text-sm" style={{ color: darkFgMuted }}>
             &copy; {new Date().getFullYear()} African Technology Forum. All
             rights reserved.
           </p>
@@ -176,14 +151,14 @@ export function Footer() {
             <Link
               to="/privacy-policy"
               className="text-sm hover:underline"
-              style={{ color: theme.foregroundMuted }}
+              style={{ color: darkFgMuted }}
             >
               Privacy Policy
             </Link>
             <Link
               to="/terms-of-service"
               className="text-sm hover:underline"
-              style={{ color: theme.foregroundMuted }}
+              style={{ color: darkFgMuted }}
             >
               Terms of Service
             </Link>
