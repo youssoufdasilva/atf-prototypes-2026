@@ -9,74 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
-import { Route as TeamRouteImport } from './routes/team'
-import { Route as ResearchRouteImport } from './routes/research'
-import { Route as PublicationsRouteImport } from './routes/publications'
-import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
-import { Route as NewsRouteImport } from './routes/news'
-import { Route as ConsultingRouteImport } from './routes/consulting'
-import { Route as ChaptersRouteImport } from './routes/chapters'
-import { Route as ChallengeRouteImport } from './routes/challenge'
-import { Route as ArticlesRouteImport } from './routes/articles'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as LegacyRouteImport } from './routes/legacy'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as NewsArticleIdRouteImport } from './routes/news.$articleId'
-import { Route as CountriesCountryRouteImport } from './routes/countries.$country'
+import { Route as LegacyIndexRouteImport } from './routes/legacy/index'
+import { Route as LegacyTermsOfServiceRouteImport } from './routes/legacy/terms-of-service'
+import { Route as LegacyTeamRouteImport } from './routes/legacy/team'
+import { Route as LegacyResearchRouteImport } from './routes/legacy/research'
+import { Route as LegacyPublicationsRouteImport } from './routes/legacy/publications'
+import { Route as LegacyPrivacyPolicyRouteImport } from './routes/legacy/privacy-policy'
+import { Route as LegacyNewsRouteImport } from './routes/legacy/news'
+import { Route as LegacyConsultingRouteImport } from './routes/legacy/consulting'
+import { Route as LegacyChaptersRouteImport } from './routes/legacy/chapters'
+import { Route as LegacyChallengeRouteImport } from './routes/legacy/challenge'
+import { Route as LegacyArticlesRouteImport } from './routes/legacy/articles'
+import { Route as LegacyAboutRouteImport } from './routes/legacy/about'
+import { Route as LegacyNewsArticleIdRouteImport } from './routes/legacy/news.$articleId'
+import { Route as LegacyCountriesCountryRouteImport } from './routes/legacy/countries.$country'
 
-const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
-  id: '/terms-of-service',
-  path: '/terms-of-service',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TeamRoute = TeamRouteImport.update({
-  id: '/team',
-  path: '/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResearchRoute = ResearchRouteImport.update({
-  id: '/research',
-  path: '/research',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PublicationsRoute = PublicationsRouteImport.update({
-  id: '/publications',
-  path: '/publications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
-  id: '/privacy-policy',
-  path: '/privacy-policy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewsRoute = NewsRouteImport.update({
-  id: '/news',
-  path: '/news',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsultingRoute = ConsultingRouteImport.update({
-  id: '/consulting',
-  path: '/consulting',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChaptersRoute = ChaptersRouteImport.update({
-  id: '/chapters',
-  path: '/chapters',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChallengeRoute = ChallengeRouteImport.update({
-  id: '/challenge',
-  path: '/challenge',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArticlesRoute = ArticlesRouteImport.update({
-  id: '/articles',
-  path: '/articles',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const LegacyRoute = LegacyRouteImport.update({
+  id: '/legacy',
+  path: '/legacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -84,210 +36,199 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NewsArticleIdRoute = NewsArticleIdRouteImport.update({
+const LegacyIndexRoute = LegacyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyTermsOfServiceRoute = LegacyTermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyTeamRoute = LegacyTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyResearchRoute = LegacyResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyPublicationsRoute = LegacyPublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyPrivacyPolicyRoute = LegacyPrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyNewsRoute = LegacyNewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyConsultingRoute = LegacyConsultingRouteImport.update({
+  id: '/consulting',
+  path: '/consulting',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyChaptersRoute = LegacyChaptersRouteImport.update({
+  id: '/chapters',
+  path: '/chapters',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyChallengeRoute = LegacyChallengeRouteImport.update({
+  id: '/challenge',
+  path: '/challenge',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyArticlesRoute = LegacyArticlesRouteImport.update({
+  id: '/articles',
+  path: '/articles',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyAboutRoute = LegacyAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => LegacyRoute,
+} as any)
+const LegacyNewsArticleIdRoute = LegacyNewsArticleIdRouteImport.update({
   id: '/$articleId',
   path: '/$articleId',
-  getParentRoute: () => NewsRoute,
+  getParentRoute: () => LegacyNewsRoute,
 } as any)
-const CountriesCountryRoute = CountriesCountryRouteImport.update({
+const LegacyCountriesCountryRoute = LegacyCountriesCountryRouteImport.update({
   id: '/countries/$country',
   path: '/countries/$country',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => LegacyRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRoute
-  '/challenge': typeof ChallengeRoute
-  '/chapters': typeof ChaptersRoute
-  '/consulting': typeof ConsultingRoute
-  '/news': typeof NewsRouteWithChildren
-  '/privacy-policy': typeof PrivacyPolicyRoute
-  '/publications': typeof PublicationsRoute
-  '/research': typeof ResearchRoute
-  '/team': typeof TeamRoute
-  '/terms-of-service': typeof TermsOfServiceRoute
-  '/countries/$country': typeof CountriesCountryRoute
-  '/news/$articleId': typeof NewsArticleIdRoute
+  '/legacy': typeof LegacyRouteWithChildren
+  '/legacy/about': typeof LegacyAboutRoute
+  '/legacy/articles': typeof LegacyArticlesRoute
+  '/legacy/challenge': typeof LegacyChallengeRoute
+  '/legacy/chapters': typeof LegacyChaptersRoute
+  '/legacy/consulting': typeof LegacyConsultingRoute
+  '/legacy/news': typeof LegacyNewsRouteWithChildren
+  '/legacy/privacy-policy': typeof LegacyPrivacyPolicyRoute
+  '/legacy/publications': typeof LegacyPublicationsRoute
+  '/legacy/research': typeof LegacyResearchRoute
+  '/legacy/team': typeof LegacyTeamRoute
+  '/legacy/terms-of-service': typeof LegacyTermsOfServiceRoute
+  '/legacy/': typeof LegacyIndexRoute
+  '/legacy/countries/$country': typeof LegacyCountriesCountryRoute
+  '/legacy/news/$articleId': typeof LegacyNewsArticleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRoute
-  '/challenge': typeof ChallengeRoute
-  '/chapters': typeof ChaptersRoute
-  '/consulting': typeof ConsultingRoute
-  '/news': typeof NewsRouteWithChildren
-  '/privacy-policy': typeof PrivacyPolicyRoute
-  '/publications': typeof PublicationsRoute
-  '/research': typeof ResearchRoute
-  '/team': typeof TeamRoute
-  '/terms-of-service': typeof TermsOfServiceRoute
-  '/countries/$country': typeof CountriesCountryRoute
-  '/news/$articleId': typeof NewsArticleIdRoute
+  '/legacy/about': typeof LegacyAboutRoute
+  '/legacy/articles': typeof LegacyArticlesRoute
+  '/legacy/challenge': typeof LegacyChallengeRoute
+  '/legacy/chapters': typeof LegacyChaptersRoute
+  '/legacy/consulting': typeof LegacyConsultingRoute
+  '/legacy/news': typeof LegacyNewsRouteWithChildren
+  '/legacy/privacy-policy': typeof LegacyPrivacyPolicyRoute
+  '/legacy/publications': typeof LegacyPublicationsRoute
+  '/legacy/research': typeof LegacyResearchRoute
+  '/legacy/team': typeof LegacyTeamRoute
+  '/legacy/terms-of-service': typeof LegacyTermsOfServiceRoute
+  '/legacy': typeof LegacyIndexRoute
+  '/legacy/countries/$country': typeof LegacyCountriesCountryRoute
+  '/legacy/news/$articleId': typeof LegacyNewsArticleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRoute
-  '/challenge': typeof ChallengeRoute
-  '/chapters': typeof ChaptersRoute
-  '/consulting': typeof ConsultingRoute
-  '/news': typeof NewsRouteWithChildren
-  '/privacy-policy': typeof PrivacyPolicyRoute
-  '/publications': typeof PublicationsRoute
-  '/research': typeof ResearchRoute
-  '/team': typeof TeamRoute
-  '/terms-of-service': typeof TermsOfServiceRoute
-  '/countries/$country': typeof CountriesCountryRoute
-  '/news/$articleId': typeof NewsArticleIdRoute
+  '/legacy': typeof LegacyRouteWithChildren
+  '/legacy/about': typeof LegacyAboutRoute
+  '/legacy/articles': typeof LegacyArticlesRoute
+  '/legacy/challenge': typeof LegacyChallengeRoute
+  '/legacy/chapters': typeof LegacyChaptersRoute
+  '/legacy/consulting': typeof LegacyConsultingRoute
+  '/legacy/news': typeof LegacyNewsRouteWithChildren
+  '/legacy/privacy-policy': typeof LegacyPrivacyPolicyRoute
+  '/legacy/publications': typeof LegacyPublicationsRoute
+  '/legacy/research': typeof LegacyResearchRoute
+  '/legacy/team': typeof LegacyTeamRoute
+  '/legacy/terms-of-service': typeof LegacyTermsOfServiceRoute
+  '/legacy/': typeof LegacyIndexRoute
+  '/legacy/countries/$country': typeof LegacyCountriesCountryRoute
+  '/legacy/news/$articleId': typeof LegacyNewsArticleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
-    | '/articles'
-    | '/challenge'
-    | '/chapters'
-    | '/consulting'
-    | '/news'
-    | '/privacy-policy'
-    | '/publications'
-    | '/research'
-    | '/team'
-    | '/terms-of-service'
-    | '/countries/$country'
-    | '/news/$articleId'
+    | '/legacy'
+    | '/legacy/about'
+    | '/legacy/articles'
+    | '/legacy/challenge'
+    | '/legacy/chapters'
+    | '/legacy/consulting'
+    | '/legacy/news'
+    | '/legacy/privacy-policy'
+    | '/legacy/publications'
+    | '/legacy/research'
+    | '/legacy/team'
+    | '/legacy/terms-of-service'
+    | '/legacy/'
+    | '/legacy/countries/$country'
+    | '/legacy/news/$articleId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
-    | '/articles'
-    | '/challenge'
-    | '/chapters'
-    | '/consulting'
-    | '/news'
-    | '/privacy-policy'
-    | '/publications'
-    | '/research'
-    | '/team'
-    | '/terms-of-service'
-    | '/countries/$country'
-    | '/news/$articleId'
+    | '/legacy/about'
+    | '/legacy/articles'
+    | '/legacy/challenge'
+    | '/legacy/chapters'
+    | '/legacy/consulting'
+    | '/legacy/news'
+    | '/legacy/privacy-policy'
+    | '/legacy/publications'
+    | '/legacy/research'
+    | '/legacy/team'
+    | '/legacy/terms-of-service'
+    | '/legacy'
+    | '/legacy/countries/$country'
+    | '/legacy/news/$articleId'
   id:
     | '__root__'
     | '/'
-    | '/about'
-    | '/articles'
-    | '/challenge'
-    | '/chapters'
-    | '/consulting'
-    | '/news'
-    | '/privacy-policy'
-    | '/publications'
-    | '/research'
-    | '/team'
-    | '/terms-of-service'
-    | '/countries/$country'
-    | '/news/$articleId'
+    | '/legacy'
+    | '/legacy/about'
+    | '/legacy/articles'
+    | '/legacy/challenge'
+    | '/legacy/chapters'
+    | '/legacy/consulting'
+    | '/legacy/news'
+    | '/legacy/privacy-policy'
+    | '/legacy/publications'
+    | '/legacy/research'
+    | '/legacy/team'
+    | '/legacy/terms-of-service'
+    | '/legacy/'
+    | '/legacy/countries/$country'
+    | '/legacy/news/$articleId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  ArticlesRoute: typeof ArticlesRoute
-  ChallengeRoute: typeof ChallengeRoute
-  ChaptersRoute: typeof ChaptersRoute
-  ConsultingRoute: typeof ConsultingRoute
-  NewsRoute: typeof NewsRouteWithChildren
-  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
-  PublicationsRoute: typeof PublicationsRoute
-  ResearchRoute: typeof ResearchRoute
-  TeamRoute: typeof TeamRoute
-  TermsOfServiceRoute: typeof TermsOfServiceRoute
-  CountriesCountryRoute: typeof CountriesCountryRoute
+  LegacyRoute: typeof LegacyRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms-of-service': {
-      id: '/terms-of-service'
-      path: '/terms-of-service'
-      fullPath: '/terms-of-service'
-      preLoaderRoute: typeof TermsOfServiceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/team': {
-      id: '/team'
-      path: '/team'
-      fullPath: '/team'
-      preLoaderRoute: typeof TeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/research': {
-      id: '/research'
-      path: '/research'
-      fullPath: '/research'
-      preLoaderRoute: typeof ResearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/publications': {
-      id: '/publications'
-      path: '/publications'
-      fullPath: '/publications'
-      preLoaderRoute: typeof PublicationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy-policy': {
-      id: '/privacy-policy'
-      path: '/privacy-policy'
-      fullPath: '/privacy-policy'
-      preLoaderRoute: typeof PrivacyPolicyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/consulting': {
-      id: '/consulting'
-      path: '/consulting'
-      fullPath: '/consulting'
-      preLoaderRoute: typeof ConsultingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chapters': {
-      id: '/chapters'
-      path: '/chapters'
-      fullPath: '/chapters'
-      preLoaderRoute: typeof ChaptersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/challenge': {
-      id: '/challenge'
-      path: '/challenge'
-      fullPath: '/challenge'
-      preLoaderRoute: typeof ChallengeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/articles': {
-      id: '/articles'
-      path: '/articles'
-      fullPath: '/articles'
-      preLoaderRoute: typeof ArticlesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/legacy': {
+      id: '/legacy'
+      path: '/legacy'
+      fullPath: '/legacy'
+      preLoaderRoute: typeof LegacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -297,47 +238,157 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/news/$articleId': {
-      id: '/news/$articleId'
-      path: '/$articleId'
-      fullPath: '/news/$articleId'
-      preLoaderRoute: typeof NewsArticleIdRouteImport
-      parentRoute: typeof NewsRoute
+    '/legacy/': {
+      id: '/legacy/'
+      path: '/'
+      fullPath: '/legacy/'
+      preLoaderRoute: typeof LegacyIndexRouteImport
+      parentRoute: typeof LegacyRoute
     }
-    '/countries/$country': {
-      id: '/countries/$country'
+    '/legacy/terms-of-service': {
+      id: '/legacy/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/legacy/terms-of-service'
+      preLoaderRoute: typeof LegacyTermsOfServiceRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/team': {
+      id: '/legacy/team'
+      path: '/team'
+      fullPath: '/legacy/team'
+      preLoaderRoute: typeof LegacyTeamRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/research': {
+      id: '/legacy/research'
+      path: '/research'
+      fullPath: '/legacy/research'
+      preLoaderRoute: typeof LegacyResearchRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/publications': {
+      id: '/legacy/publications'
+      path: '/publications'
+      fullPath: '/legacy/publications'
+      preLoaderRoute: typeof LegacyPublicationsRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/privacy-policy': {
+      id: '/legacy/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/legacy/privacy-policy'
+      preLoaderRoute: typeof LegacyPrivacyPolicyRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/news': {
+      id: '/legacy/news'
+      path: '/news'
+      fullPath: '/legacy/news'
+      preLoaderRoute: typeof LegacyNewsRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/consulting': {
+      id: '/legacy/consulting'
+      path: '/consulting'
+      fullPath: '/legacy/consulting'
+      preLoaderRoute: typeof LegacyConsultingRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/chapters': {
+      id: '/legacy/chapters'
+      path: '/chapters'
+      fullPath: '/legacy/chapters'
+      preLoaderRoute: typeof LegacyChaptersRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/challenge': {
+      id: '/legacy/challenge'
+      path: '/challenge'
+      fullPath: '/legacy/challenge'
+      preLoaderRoute: typeof LegacyChallengeRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/articles': {
+      id: '/legacy/articles'
+      path: '/articles'
+      fullPath: '/legacy/articles'
+      preLoaderRoute: typeof LegacyArticlesRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/about': {
+      id: '/legacy/about'
+      path: '/about'
+      fullPath: '/legacy/about'
+      preLoaderRoute: typeof LegacyAboutRouteImport
+      parentRoute: typeof LegacyRoute
+    }
+    '/legacy/news/$articleId': {
+      id: '/legacy/news/$articleId'
+      path: '/$articleId'
+      fullPath: '/legacy/news/$articleId'
+      preLoaderRoute: typeof LegacyNewsArticleIdRouteImport
+      parentRoute: typeof LegacyNewsRoute
+    }
+    '/legacy/countries/$country': {
+      id: '/legacy/countries/$country'
       path: '/countries/$country'
-      fullPath: '/countries/$country'
-      preLoaderRoute: typeof CountriesCountryRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/legacy/countries/$country'
+      preLoaderRoute: typeof LegacyCountriesCountryRouteImport
+      parentRoute: typeof LegacyRoute
     }
   }
 }
 
-interface NewsRouteChildren {
-  NewsArticleIdRoute: typeof NewsArticleIdRoute
+interface LegacyNewsRouteChildren {
+  LegacyNewsArticleIdRoute: typeof LegacyNewsArticleIdRoute
 }
 
-const NewsRouteChildren: NewsRouteChildren = {
-  NewsArticleIdRoute: NewsArticleIdRoute,
+const LegacyNewsRouteChildren: LegacyNewsRouteChildren = {
+  LegacyNewsArticleIdRoute: LegacyNewsArticleIdRoute,
 }
 
-const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
+const LegacyNewsRouteWithChildren = LegacyNewsRoute._addFileChildren(
+  LegacyNewsRouteChildren,
+)
+
+interface LegacyRouteChildren {
+  LegacyAboutRoute: typeof LegacyAboutRoute
+  LegacyArticlesRoute: typeof LegacyArticlesRoute
+  LegacyChallengeRoute: typeof LegacyChallengeRoute
+  LegacyChaptersRoute: typeof LegacyChaptersRoute
+  LegacyConsultingRoute: typeof LegacyConsultingRoute
+  LegacyNewsRoute: typeof LegacyNewsRouteWithChildren
+  LegacyPrivacyPolicyRoute: typeof LegacyPrivacyPolicyRoute
+  LegacyPublicationsRoute: typeof LegacyPublicationsRoute
+  LegacyResearchRoute: typeof LegacyResearchRoute
+  LegacyTeamRoute: typeof LegacyTeamRoute
+  LegacyTermsOfServiceRoute: typeof LegacyTermsOfServiceRoute
+  LegacyIndexRoute: typeof LegacyIndexRoute
+  LegacyCountriesCountryRoute: typeof LegacyCountriesCountryRoute
+}
+
+const LegacyRouteChildren: LegacyRouteChildren = {
+  LegacyAboutRoute: LegacyAboutRoute,
+  LegacyArticlesRoute: LegacyArticlesRoute,
+  LegacyChallengeRoute: LegacyChallengeRoute,
+  LegacyChaptersRoute: LegacyChaptersRoute,
+  LegacyConsultingRoute: LegacyConsultingRoute,
+  LegacyNewsRoute: LegacyNewsRouteWithChildren,
+  LegacyPrivacyPolicyRoute: LegacyPrivacyPolicyRoute,
+  LegacyPublicationsRoute: LegacyPublicationsRoute,
+  LegacyResearchRoute: LegacyResearchRoute,
+  LegacyTeamRoute: LegacyTeamRoute,
+  LegacyTermsOfServiceRoute: LegacyTermsOfServiceRoute,
+  LegacyIndexRoute: LegacyIndexRoute,
+  LegacyCountriesCountryRoute: LegacyCountriesCountryRoute,
+}
+
+const LegacyRouteWithChildren =
+  LegacyRoute._addFileChildren(LegacyRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  ArticlesRoute: ArticlesRoute,
-  ChallengeRoute: ChallengeRoute,
-  ChaptersRoute: ChaptersRoute,
-  ConsultingRoute: ConsultingRoute,
-  NewsRoute: NewsRouteWithChildren,
-  PrivacyPolicyRoute: PrivacyPolicyRoute,
-  PublicationsRoute: PublicationsRoute,
-  ResearchRoute: ResearchRoute,
-  TeamRoute: TeamRoute,
-  TermsOfServiceRoute: TermsOfServiceRoute,
-  CountriesCountryRoute: CountriesCountryRoute,
+  LegacyRoute: LegacyRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

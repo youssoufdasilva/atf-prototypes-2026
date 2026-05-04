@@ -4,7 +4,7 @@ import { ArrowLeft, Library, FileText, BookOpen, Newspaper } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 
-export const Route = createFileRoute("/publications")({
+export const Route = createFileRoute("/legacy/publications")({
   component: PublicationsPage,
 });
 
@@ -17,14 +17,14 @@ function PublicationsPage() {
       title: "Articles",
       description: "Opinion pieces, analysis, and thought leadership",
       count: 45,
-      href: "/articles",
+      href: "/legacy/articles",
     },
     {
       icon: BookOpen,
       title: "Research Papers",
       description: "In-depth studies and academic research",
       count: 12,
-      href: "/research",
+      href: "/legacy/research",
     },
     {
       icon: FileText,
@@ -46,7 +46,7 @@ function PublicationsPage() {
       style={{ backgroundColor: theme.background }}
     >
       <div className="container mx-auto px-6">
-        <Link to="/">
+        <Link to="/legacy">
           <Button
             variant="ghost"
             className="mb-8 gap-2"

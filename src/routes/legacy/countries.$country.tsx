@@ -4,7 +4,7 @@ import { ArrowLeft, MapPin, Users, Building2, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 
-export const Route = createFileRoute("/countries/$country")({
+export const Route = createFileRoute("/legacy/countries/$country")({
   component: CountryPage,
 });
 
@@ -84,7 +84,7 @@ function CountryPage() {
           <p className="mb-8" style={{ color: theme.foregroundMuted }}>
             We don't have information for this country yet.
           </p>
-          <Link to="/">
+          <Link to="/legacy">
             <Button
               style={{
                 backgroundColor: accentColor,
@@ -111,7 +111,7 @@ function CountryPage() {
       style={{ backgroundColor: theme.background }}
     >
       <div className="container mx-auto px-6">
-        <Link to="/">
+        <Link to="/legacy">
           <Button
             variant="ghost"
             className="mb-8 gap-2"

@@ -252,7 +252,7 @@ function CenteredLayout({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <Link to="/consulting">
+        <Link to="/legacy/consulting">
           <Button
             size="lg"
             className="text-lg px-8 py-6"
@@ -262,7 +262,7 @@ function CenteredLayout({
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </Link>
-        <Link to="/challenge">
+        <Link to="/legacy/challenge">
           <Button
             size="lg"
             variant="outline"
@@ -341,7 +341,7 @@ function SplitLayout({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Link to="/consulting">
+          <Link to="/legacy/consulting">
             <Button
               size="lg"
               className="text-base px-6 py-5"
@@ -351,7 +351,7 @@ function SplitLayout({
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
-          <Link to="/challenge">
+          <Link to="/legacy/challenge">
             <Button
               size="lg"
               variant="outline"
@@ -460,7 +460,7 @@ function FullWidthLayout({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <Link to="/consulting">
+        <Link to="/legacy/consulting">
           <Button
             size="lg"
             className="text-lg px-8 py-6 group"
@@ -473,7 +473,7 @@ function FullWidthLayout({
             <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
-        <Link to="/challenge">
+        <Link to="/legacy/challenge">
           <Button
             size="lg"
             variant="outline"

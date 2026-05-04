@@ -4,7 +4,7 @@ import { ArrowLeft, Calendar, Share2, Bookmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 
-export const Route = createFileRoute("/news/$articleId")({
+export const Route = createFileRoute("/legacy/news/$articleId")({
   component: NewsArticlePage,
 });
 
@@ -101,7 +101,7 @@ function NewsArticlePage() {
           <p className="mb-8" style={{ color: theme.foregroundMuted }}>
             This article doesn't exist or has been removed.
           </p>
-          <Link to="/news">
+          <Link to="/legacy/news">
             <Button
               style={{
                 backgroundColor: accentColor,
@@ -122,7 +122,7 @@ function NewsArticlePage() {
       style={{ backgroundColor: theme.background }}
     >
       <div className="container mx-auto px-6">
-        <Link to="/news">
+        <Link to="/legacy/news">
           <Button
             variant="ghost"
             className="mb-8 gap-2"

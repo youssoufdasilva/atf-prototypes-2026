@@ -4,7 +4,7 @@ import { ArrowLeft, Heart, Eye, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/legacy/about")({
   component: AboutPage,
 });
 
@@ -38,7 +38,7 @@ function AboutPage() {
       style={{ backgroundColor: theme.background }}
     >
       <div className="container mx-auto px-6">
-        <Link to="/">
+        <Link to="/legacy">
           <Button
             variant="ghost"
             className="mb-8 gap-2"
