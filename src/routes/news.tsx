@@ -4,7 +4,7 @@ import { ArrowLeft, Newspaper, Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 
-export const Route = createFileRoute("/legacy/news")({
+export const Route = createFileRoute("/news")({
   component: NewsPage,
 });
 
@@ -68,7 +68,7 @@ function NewsPage() {
       style={{ backgroundColor: theme.background }}
     >
       <div className="container mx-auto px-6">
-        <Link to="/legacy">
+        <Link to="/">
           <Button
             variant="ghost"
             className="mb-8 gap-2"
@@ -118,7 +118,7 @@ function NewsPage() {
             className="grid md:grid-cols-2 gap-6 mb-8"
           >
             {featuredArticles.map((article) => (
-              <Link key={article.id} to="/legacy/news/$articleId" params={{ articleId: article.id }}>
+              <Link key={article.id} to="/news/$articleId" params={{ articleId: article.id }}>
                 <article
                   className={`p-6 h-full ${version === "D" ? "rounded-2xl" : "rounded-xl"} hover:shadow-lg transition-shadow cursor-pointer`}
                   style={{
@@ -176,7 +176,7 @@ function NewsPage() {
             className="space-y-4"
           >
             {otherArticles.map((article) => (
-              <Link key={article.id} to="/legacy/news/$articleId" params={{ articleId: article.id }}>
+              <Link key={article.id} to="/news/$articleId" params={{ articleId: article.id }}>
                 <article
                   className={`p-5 ${version === "D" ? "rounded-xl" : "rounded-lg"} hover:shadow-md transition-shadow cursor-pointer flex items-center gap-4`}
                   style={{

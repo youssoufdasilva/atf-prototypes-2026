@@ -24,7 +24,7 @@ const programs: Program[] = [
     subtitle: "Expert Technology Advisory",
     description:
       "Strategic technology consulting for governments, NGOs, and enterprises driving digital transformation across Africa.",
-    link: "/legacy/consulting",
+    link: "/consulting",
     color: "#51b847",
   },
   {
@@ -34,7 +34,7 @@ const programs: Program[] = [
     subtitle: "Innovation Competition",
     description:
       "Annual innovation challenge empowering young Africans to develop technology solutions for local problems.",
-    link: "/legacy/challenge",
+    link: "/challenge",
     color: "#fcba2f",
   },
   {
@@ -44,7 +44,7 @@ const programs: Program[] = [
     subtitle: "Pan-African Network",
     description:
       "A growing network of chapters across Africa fostering local tech communities and capacity building.",
-    link: "/legacy/chapters",
+    link: "/chapters",
     color: "#ee4035",
   },
 ];
@@ -100,7 +100,7 @@ function ProgramCard({ program, variant }: { program: Program; variant: "A" | "B
         {program.description}
       </p>
 
-      <Link to={program.link as "/legacy/consulting" | "/legacy/challenge" | "/legacy/chapters"}>
+      <Link to={program.link as "/consulting" | "/challenge" | "/chapters"}>
         <Button
           variant="ghost"
           className="group p-0 h-auto"

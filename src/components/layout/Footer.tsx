@@ -12,19 +12,19 @@ import { Logo } from "@/components/ui/Logo";
 
 const footerLinks = {
   programs: [
-    { label: "ATF Consulting", href: "/legacy/consulting" },
-    { label: "ATF Challenge", href: "/legacy/challenge" },
-    { label: "ATF Chapters", href: "/legacy/chapters" },
+    { label: "ATF Consulting", href: "/consulting" },
+    { label: "ATF Challenge", href: "/challenge" },
+    { label: "ATF Chapters", href: "/chapters" },
   ],
   about: [
-    { label: "Our Story", href: "/legacy/about" },
-    { label: "Team", href: "/legacy/team" },
-    { label: "News", href: "/legacy/news" },
+    { label: "Our Story", href: "/about" },
+    { label: "Team", href: "/team" },
+    { label: "News", href: "/news" },
   ],
   resources: [
-    { label: "Articles", href: "/legacy/articles" },
-    { label: "Research", href: "/legacy/research" },
-    { label: "Publications", href: "/legacy/publications" },
+    { label: "Articles", href: "/articles" },
+    { label: "Research", href: "/research" },
+    { label: "Publications", href: "/publications" },
   ],
 };
 
@@ -51,7 +51,7 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/legacy" className="inline-block mb-6">
+            <Link to="/" className="inline-block mb-6">
               <Logo size="lg" />
             </Link>
             <p
@@ -174,14 +174,14 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             <Link
-              to="/legacy/privacy-policy"
+              to="/privacy-policy"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >
               Privacy Policy
             </Link>
             <Link
-              to="/legacy/terms-of-service"
+              to="/terms-of-service"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >

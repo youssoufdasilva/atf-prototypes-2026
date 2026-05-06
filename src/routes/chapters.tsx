@@ -4,7 +4,7 @@ import { ArrowLeft, MapPin, Users, Building, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 
-export const Route = createFileRoute("/legacy/chapters")({
+export const Route = createFileRoute("/chapters")({
   component: ChaptersPage,
 });
 
@@ -21,7 +21,7 @@ function ChaptersPage() {
   return (
     <div className="min-h-[80vh] py-20" style={{ backgroundColor: theme.background }}>
       <div className="container mx-auto px-6">
-        <Link to="/legacy">
+        <Link to="/">
           <Button
             variant="ghost"
             className="mb-8 gap-2"

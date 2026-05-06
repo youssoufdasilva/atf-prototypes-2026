@@ -155,7 +155,7 @@ export function HeroD() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Link to="/legacy/consulting">
+            <Link to="/consulting">
               <Button
                 size="lg"
                 className="text-lg px-8 py-6 rounded-full"
@@ -168,7 +168,7 @@ export function HeroD() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Link to="/legacy/challenge">
+            <Link to="/challenge">
               <Button
                 size="lg"
                 variant="outline"

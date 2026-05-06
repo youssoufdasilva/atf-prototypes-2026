@@ -93,7 +93,7 @@ export function HeroC() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Link to="/legacy/consulting">
+              <Link to="/consulting">
                 <Button
                   size="lg"
                   className="text-base px-6 py-5"
@@ -106,7 +106,7 @@ export function HeroC() {
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
-              <Link to="/legacy/challenge">
+              <Link to="/challenge">
                 <Button
                   size="lg"
                   variant="outline"

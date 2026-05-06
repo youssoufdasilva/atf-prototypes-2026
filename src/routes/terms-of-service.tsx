@@ -4,7 +4,7 @@ import { ArrowLeft, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 
-export const Route = createFileRoute("/legacy/terms-of-service")({
+export const Route = createFileRoute("/terms-of-service")({
   component: TermsOfServicePage,
 });
 
@@ -55,7 +55,7 @@ function TermsOfServicePage() {
       style={{ backgroundColor: theme.background }}
     >
       <div className="container mx-auto px-6">
-        <Link to="/legacy">
+        <Link to="/">
           <Button
             variant="ghost"
             className="mb-8 gap-2"

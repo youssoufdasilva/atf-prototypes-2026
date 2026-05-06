@@ -17,7 +17,7 @@ export function FooterMinimal() {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <Link to="/legacy" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <Logo size="sm" />
             <span
               className="font-heading font-semibold"
@@ -30,28 +30,28 @@ export function FooterMinimal() {
           {/* Key Links */}
           <nav className="flex flex-wrap items-center justify-center gap-6">
             <Link
-              to="/legacy/about"
+              to="/about"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >
               About
             </Link>
             <Link
-              to="/legacy/consulting"
+              to="/consulting"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >
               Programs
             </Link>
             <Link
-              to="/legacy/news"
+              to="/news"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >
               News
             </Link>
             <Link
-              to="/legacy/challenge"
+              to="/challenge"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >

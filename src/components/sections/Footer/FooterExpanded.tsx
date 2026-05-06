@@ -73,7 +73,7 @@ export function FooterExpanded() {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/legacy" className="inline-block mb-6">
+            <Link to="/" className="inline-block mb-6">
               <Logo size="lg" />
             </Link>
             <p
@@ -241,14 +241,14 @@ export function FooterExpanded() {
           </p>
           <div className="flex gap-6">
             <Link
-              to="/legacy/privacy-policy"
+              to="/privacy-policy"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >
               Privacy Policy
             </Link>
             <Link
-              to="/legacy/terms-of-service"
+              to="/terms-of-service"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >
