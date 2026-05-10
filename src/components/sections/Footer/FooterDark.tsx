@@ -23,7 +23,7 @@ export function FooterDark() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="inline-block mb-6">
+            <Link to="/legacy" className="inline-block mb-6">
               {/* Force neg space logo for dark footer */}
               <img
                 src="/atf-assets/atf logo neg space copy.png"
@@ -149,14 +149,14 @@ export function FooterDark() {
           </p>
           <div className="flex gap-6">
             <Link
-              to="/privacy-policy"
+              to="/legacy/privacy-policy"
               className="text-sm hover:underline"
               style={{ color: darkFgMuted }}
             >
               Privacy Policy
             </Link>
             <Link
-              to="/terms-of-service"
+              to="/legacy/terms-of-service"
               className="text-sm hover:underline"
               style={{ color: darkFgMuted }}
             >

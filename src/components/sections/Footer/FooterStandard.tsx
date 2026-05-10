@@ -18,7 +18,7 @@ export function FooterStandard() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="inline-block mb-6">
+            <Link to="/legacy" className="inline-block mb-6">
               <Logo size="lg" />
             </Link>
             <p
@@ -139,14 +139,14 @@ export function FooterStandard() {
           </p>
           <div className="flex gap-6">
             <Link
-              to="/privacy-policy"
+              to="/legacy/privacy-policy"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >
               Privacy Policy
             </Link>
             <Link
-              to="/terms-of-service"
+              to="/legacy/terms-of-service"
               className="text-sm hover:underline"
               style={{ color: theme.foregroundMuted }}
             >

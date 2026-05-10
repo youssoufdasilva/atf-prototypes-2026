@@ -28,63 +28,62 @@ const navItems: NavItem[] = [
   {
     label: "Who We Are",
     children: [
-      { label: "Our Mission, Vision and Story", href: "/about" },
-      { label: "The Team And Contributors", href: "/team" },
+      { label: "Our Mission, Vision and Story", href: "/legacy/about" },
+      { label: "The Team And Contributors", href: "/legacy/team" },
     ],
   },
   {
     label: "What We Do",
     children: [
-      { label: "ATF Consulting", href: "/consulting" },
-      { label: "ATF Challenge", href: "/challenge" },
-      { label: "ATF Chapters", href: "/chapters" },
+      { label: "ATF Consulting", href: "/legacy/consulting" },
+      { label: "ATF Challenge", href: "/legacy/challenge" },
+      { label: "ATF Chapters", href: "/legacy/chapters" },
     ],
   },
   {
     label: "Where We Work",
     children: [
-      { label: "Ghana", href: "/countries/ghana" },
-      { label: "Nigeria", href: "/countries/nigeria" },
-      { label: "Kenya", href: "/countries/kenya" },
-      { label: "South Africa", href: "/countries/south-africa" },
+      { label: "Ghana", href: "/legacy/countries/ghana" },
+      { label: "Nigeria", href: "/legacy/countries/nigeria" },
+      { label: "Kenya", href: "/legacy/countries/kenya" },
+      { label: "South Africa", href: "/legacy/countries/south-africa" },
     ],
   },
   {
     label: "Publications",
     children: [
-      { label: "Articles", href: "/articles" },
-      { label: "Research Papers", href: "/research" },
+      { label: "Articles", href: "/legacy/articles" },
+      { label: "Research Papers", href: "/legacy/research" },
     ],
   },
   {
     label: "News",
-    href: "/news",
+    href: "/legacy/news",
   },
 ];
 
-// All registered routes in the app
 const registeredRoutes = [
   "/",
-  "/about",
-  "/team",
-  "/consulting",
-  "/challenge",
-  "/chapters",
-  "/news",
-  "/articles",
-  "/research",
-  "/publications",
-  "/privacy-policy",
-  "/terms-of-service",
+  "/legacy",
+  "/legacy/about",
+  "/legacy/team",
+  "/legacy/consulting",
+  "/legacy/challenge",
+  "/legacy/chapters",
+  "/legacy/news",
+  "/legacy/articles",
+  "/legacy/research",
+  "/legacy/publications",
+  "/legacy/privacy-policy",
+  "/legacy/terms-of-service",
 ];
 
 // Check if route is registered or is a dynamic country route
 const isRegisteredRoute = (href: string) => {
   if (registeredRoutes.includes(href)) return true;
   // Handle dynamic country routes
-  if (href.startsWith("/countries/")) return true;
-  // Handle dynamic news routes
-  if (href.startsWith("/news/")) return true;
+  if (href.startsWith("/legacy/countries/")) return true;
+  if (href.startsWith("/legacy/news/")) return true;
   return false;
 };
 
@@ -210,7 +209,7 @@ function MobileNav() {
             className="flex items-center justify-between p-4 border-b"
             style={{ borderColor: theme.border }}
           >
-            <Link to="/" onClick={() => setIsOpen(false)}>
+            <Link to="/legacy" onClick={() => setIsOpen(false)}>
               <Logo size="sm" />
             </Link>
           </div>
@@ -270,7 +269,7 @@ function MobileNav() {
 
           {/* CTA */}
           <div className="p-4 border-t" style={{ borderColor: theme.border }}>
-            <Link to="/challenge" onClick={() => setIsOpen(false)}>
+            <Link to="/legacy/challenge" onClick={() => setIsOpen(false)}>
               <Button
                 className="w-full"
                 style={{
@@ -302,7 +301,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/legacy" className="flex items-center gap-3">
             <Logo size="md" />
             <span
               className="hidden sm:block font-heading font-bold text-lg"
@@ -317,7 +316,7 @@ export function Navbar() {
 
           {/* CTA and Mobile menu */}
           <div className="flex items-center gap-4">
-            <Link to="/challenge" className="hidden lg:block">
+            <Link to="/legacy/challenge" className="hidden lg:block">
               <Button
                 style={{
                   backgroundColor: accentColor,

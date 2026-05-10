@@ -158,7 +158,7 @@ export function HeroA() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Link to="/consulting">
+            <Link to="/legacy/consulting">
               <Button
                 size="lg"
                 className="text-lg px-8 py-6"
@@ -171,7 +171,7 @@ export function HeroA() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Link to="/challenge">
+            <Link to="/legacy/challenge">
               <Button
                 size="lg"
                 variant="outline"

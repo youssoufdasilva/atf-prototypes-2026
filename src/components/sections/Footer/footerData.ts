@@ -2,19 +2,19 @@ import { Facebook, Twitter, Linkedin, Youtube, Mail, MapPin, type LucideIcon } f
 
 export const footerLinks = {
   programs: [
-    { label: "ATF Consulting", href: "/consulting" },
-    { label: "ATF Challenge", href: "/challenge" },
-    { label: "ATF Chapters", href: "/chapters" },
+    { label: "ATF Consulting", href: "/legacy/consulting" },
+    { label: "ATF Challenge", href: "/legacy/challenge" },
+    { label: "ATF Chapters", href: "/legacy/chapters" },
   ],
   about: [
-    { label: "Our Story", href: "/about" },
-    { label: "Team", href: "/team" },
-    { label: "News", href: "/news" },
+    { label: "Our Story", href: "/legacy/about" },
+    { label: "Team", href: "/legacy/team" },
+    { label: "News", href: "/legacy/news" },
   ],
   resources: [
-    { label: "Articles", href: "/articles" },
-    { label: "Research", href: "/research" },
-    { label: "Publications", href: "/publications" },
+    { label: "Articles", href: "/legacy/articles" },
+    { label: "Research", href: "/legacy/research" },
+    { label: "Publications", href: "/legacy/publications" },
   ],
 };
 
