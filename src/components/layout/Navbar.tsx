@@ -185,7 +185,7 @@ function DesktopNav() {
 }
 
 function MobileNav() {
-  const { theme, accentColor } = useTheme();
+  const { theme, accentColor, isDarkTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -210,7 +210,7 @@ function MobileNav() {
             style={{ borderColor: theme.border }}
           >
             <Link to="/legacy" onClick={() => setIsOpen(false)}>
-              <Logo size="sm" />
+              <Logo size="sm" variant={isDarkTheme || theme.logoVariant === "negSpace" ? "negSpace" : "standard"} />
             </Link>
           </div>
 
@@ -288,7 +288,7 @@ function MobileNav() {
 }
 
 export function Navbar() {
-  const { theme, accentColor } = useTheme();
+  const { theme, accentColor, isDarkTheme } = useTheme();
 
   return (
     <header
@@ -302,7 +302,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/legacy" className="flex items-center gap-3">
-            <Logo size="md" />
+            <Logo size="md" variant={isDarkTheme || theme.logoVariant === "negSpace" ? "negSpace" : "standard"} />
             <span
               className="hidden sm:block font-heading font-bold text-lg"
               style={{ color: theme.foreground }}

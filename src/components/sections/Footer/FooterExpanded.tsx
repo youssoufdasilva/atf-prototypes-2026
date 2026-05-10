@@ -74,7 +74,7 @@ export function FooterExpanded() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link to="/legacy" className="inline-block mb-6">
-              <Logo size="lg" />
+              <Logo size="lg" variant={isDarkTheme || theme.logoVariant === "negSpace" ? "negSpace" : "standard"} />
             </Link>
             <p
               className="text-sm leading-relaxed mb-6 max-w-sm"

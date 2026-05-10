@@ -1,8 +1,9 @@
-import { useTheme } from "@/contexts/ThemeContext";
+import type { LogoVariant } from "@/lib/themes";
 
 interface LogoProps {
   className?: string;
   size?: "sm" | "md" | "lg";
+  variant?: LogoVariant;
 }
 
 const sizeClasses = {
@@ -11,13 +12,8 @@ const sizeClasses = {
   lg: "h-12 w-auto",
 };
 
-export function Logo({ className = "", size = "md" }: LogoProps) {
-  const { theme, isDarkTheme } = useTheme();
-
-  // Use neg space logo for dark themes or when logoVariant is negSpace
-  const useNegSpace = isDarkTheme || theme.logoVariant === "negSpace";
-
-  const logoSrc = useNegSpace
+export function Logo({ className = "", size = "md", variant = "standard" }: LogoProps) {
+  const logoSrc = variant === "negSpace"
     ? "/atf-assets/atf logo neg space copy.png"
     : "/atf-assets/atf-logo-vector.svg";
 
