@@ -25,6 +25,7 @@ import { Route as LegacyChaptersRouteImport } from './routes/legacy/chapters'
 import { Route as LegacyChallengeRouteImport } from './routes/legacy/challenge'
 import { Route as LegacyArticlesRouteImport } from './routes/legacy/articles'
 import { Route as LegacyAboutRouteImport } from './routes/legacy/about'
+import { Route as ClaudeDesignPrototypeHeroRouteImport } from './routes/claude-design/prototype-hero'
 import { Route as LegacyNewsArticleIdRouteImport } from './routes/legacy/news.$articleId'
 import { Route as LegacyCountriesCountryRouteImport } from './routes/legacy/countries.$country'
 
@@ -108,6 +109,12 @@ const LegacyAboutRoute = LegacyAboutRouteImport.update({
   path: '/about',
   getParentRoute: () => LegacyRoute,
 } as any)
+const ClaudeDesignPrototypeHeroRoute =
+  ClaudeDesignPrototypeHeroRouteImport.update({
+    id: '/prototype-hero',
+    path: '/prototype-hero',
+    getParentRoute: () => ClaudeDesignRoute,
+  } as any)
 const LegacyNewsArticleIdRoute = LegacyNewsArticleIdRouteImport.update({
   id: '/$articleId',
   path: '/$articleId',
@@ -123,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/claude-design': typeof ClaudeDesignRouteWithChildren
   '/legacy': typeof LegacyRouteWithChildren
+  '/claude-design/prototype-hero': typeof ClaudeDesignPrototypeHeroRoute
   '/legacy/about': typeof LegacyAboutRoute
   '/legacy/articles': typeof LegacyArticlesRoute
   '/legacy/challenge': typeof LegacyChallengeRoute
@@ -141,6 +149,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/claude-design/prototype-hero': typeof ClaudeDesignPrototypeHeroRoute
   '/legacy/about': typeof LegacyAboutRoute
   '/legacy/articles': typeof LegacyArticlesRoute
   '/legacy/challenge': typeof LegacyChallengeRoute
@@ -162,6 +171,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/claude-design': typeof ClaudeDesignRouteWithChildren
   '/legacy': typeof LegacyRouteWithChildren
+  '/claude-design/prototype-hero': typeof ClaudeDesignPrototypeHeroRoute
   '/legacy/about': typeof LegacyAboutRoute
   '/legacy/articles': typeof LegacyArticlesRoute
   '/legacy/challenge': typeof LegacyChallengeRoute
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/'
     | '/claude-design'
     | '/legacy'
+    | '/claude-design/prototype-hero'
     | '/legacy/about'
     | '/legacy/articles'
     | '/legacy/challenge'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/claude-design/prototype-hero'
     | '/legacy/about'
     | '/legacy/articles'
     | '/legacy/challenge'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
     | '/'
     | '/claude-design'
     | '/legacy'
+    | '/claude-design/prototype-hero'
     | '/legacy/about'
     | '/legacy/articles'
     | '/legacy/challenge'
@@ -359,6 +372,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegacyAboutRouteImport
       parentRoute: typeof LegacyRoute
     }
+    '/claude-design/prototype-hero': {
+      id: '/claude-design/prototype-hero'
+      path: '/prototype-hero'
+      fullPath: '/claude-design/prototype-hero'
+      preLoaderRoute: typeof ClaudeDesignPrototypeHeroRouteImport
+      parentRoute: typeof ClaudeDesignRoute
+    }
     '/legacy/news/$articleId': {
       id: '/legacy/news/$articleId'
       path: '/$articleId'
@@ -377,10 +397,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface ClaudeDesignRouteChildren {
+  ClaudeDesignPrototypeHeroRoute: typeof ClaudeDesignPrototypeHeroRoute
   ClaudeDesignIndexRoute: typeof ClaudeDesignIndexRoute
 }
 
 const ClaudeDesignRouteChildren: ClaudeDesignRouteChildren = {
+  ClaudeDesignPrototypeHeroRoute: ClaudeDesignPrototypeHeroRoute,
   ClaudeDesignIndexRoute: ClaudeDesignIndexRoute,
 }
 
