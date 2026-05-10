@@ -69,3 +69,17 @@ pnpm dlx shadcn@latest add <component>
 ## Path Aliases
 
 `@/*` maps to `./src/*` (configured in tsconfig.json and vite.config.ts)
+
+## Agent skills
+
+### Issue tracker
+
+Issues are tracked as local markdown files in `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Uses AFK/HITL vocabulary instead of defaults. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context layout (one `CONTEXT.md` + `docs/adr/` at root). See `docs/agents/domain.md`.
