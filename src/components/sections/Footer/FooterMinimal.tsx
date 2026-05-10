@@ -18,7 +18,7 @@ export function FooterMinimal() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <Link to="/legacy" className="flex items-center gap-3">
-            <Logo size="sm" />
+            <Logo size="sm" variant={isDarkTheme || theme.logoVariant === "negSpace" ? "negSpace" : "standard"} />
             <span
               className="font-heading font-semibold"
               style={{ color: theme.foreground }}
