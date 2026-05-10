@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LegacyRouteImport } from './routes/legacy'
+import { Route as ClaudeDesignRouteImport } from './routes/claude-design'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LegacyIndexRouteImport } from './routes/legacy/index'
+import { Route as ClaudeDesignIndexRouteImport } from './routes/claude-design/index'
 import { Route as LegacyTermsOfServiceRouteImport } from './routes/legacy/terms-of-service'
 import { Route as LegacyTeamRouteImport } from './routes/legacy/team'
 import { Route as LegacyResearchRouteImport } from './routes/legacy/research'
@@ -31,6 +33,11 @@ const LegacyRoute = LegacyRouteImport.update({
   path: '/legacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClaudeDesignRoute = ClaudeDesignRouteImport.update({
+  id: '/claude-design',
+  path: '/claude-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -40,6 +47,11 @@ const LegacyIndexRoute = LegacyIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => LegacyRoute,
+} as any)
+const ClaudeDesignIndexRoute = ClaudeDesignIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ClaudeDesignRoute,
 } as any)
 const LegacyTermsOfServiceRoute = LegacyTermsOfServiceRouteImport.update({
   id: '/terms-of-service',
@@ -109,6 +121,7 @@ const LegacyCountriesCountryRoute = LegacyCountriesCountryRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/claude-design': typeof ClaudeDesignRouteWithChildren
   '/legacy': typeof LegacyRouteWithChildren
   '/legacy/about': typeof LegacyAboutRoute
   '/legacy/articles': typeof LegacyArticlesRoute
@@ -121,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/legacy/research': typeof LegacyResearchRoute
   '/legacy/team': typeof LegacyTeamRoute
   '/legacy/terms-of-service': typeof LegacyTermsOfServiceRoute
+  '/claude-design/': typeof ClaudeDesignIndexRoute
   '/legacy/': typeof LegacyIndexRoute
   '/legacy/countries/$country': typeof LegacyCountriesCountryRoute
   '/legacy/news/$articleId': typeof LegacyNewsArticleIdRoute
@@ -138,6 +152,7 @@ export interface FileRoutesByTo {
   '/legacy/research': typeof LegacyResearchRoute
   '/legacy/team': typeof LegacyTeamRoute
   '/legacy/terms-of-service': typeof LegacyTermsOfServiceRoute
+  '/claude-design': typeof ClaudeDesignIndexRoute
   '/legacy': typeof LegacyIndexRoute
   '/legacy/countries/$country': typeof LegacyCountriesCountryRoute
   '/legacy/news/$articleId': typeof LegacyNewsArticleIdRoute
@@ -145,6 +160,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/claude-design': typeof ClaudeDesignRouteWithChildren
   '/legacy': typeof LegacyRouteWithChildren
   '/legacy/about': typeof LegacyAboutRoute
   '/legacy/articles': typeof LegacyArticlesRoute
@@ -157,6 +173,7 @@ export interface FileRoutesById {
   '/legacy/research': typeof LegacyResearchRoute
   '/legacy/team': typeof LegacyTeamRoute
   '/legacy/terms-of-service': typeof LegacyTermsOfServiceRoute
+  '/claude-design/': typeof ClaudeDesignIndexRoute
   '/legacy/': typeof LegacyIndexRoute
   '/legacy/countries/$country': typeof LegacyCountriesCountryRoute
   '/legacy/news/$articleId': typeof LegacyNewsArticleIdRoute
@@ -165,6 +182,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/claude-design'
     | '/legacy'
     | '/legacy/about'
     | '/legacy/articles'
@@ -177,6 +195,7 @@ export interface FileRouteTypes {
     | '/legacy/research'
     | '/legacy/team'
     | '/legacy/terms-of-service'
+    | '/claude-design/'
     | '/legacy/'
     | '/legacy/countries/$country'
     | '/legacy/news/$articleId'
@@ -194,12 +213,14 @@ export interface FileRouteTypes {
     | '/legacy/research'
     | '/legacy/team'
     | '/legacy/terms-of-service'
+    | '/claude-design'
     | '/legacy'
     | '/legacy/countries/$country'
     | '/legacy/news/$articleId'
   id:
     | '__root__'
     | '/'
+    | '/claude-design'
     | '/legacy'
     | '/legacy/about'
     | '/legacy/articles'
@@ -212,6 +233,7 @@ export interface FileRouteTypes {
     | '/legacy/research'
     | '/legacy/team'
     | '/legacy/terms-of-service'
+    | '/claude-design/'
     | '/legacy/'
     | '/legacy/countries/$country'
     | '/legacy/news/$articleId'
@@ -219,6 +241,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClaudeDesignRoute: typeof ClaudeDesignRouteWithChildren
   LegacyRoute: typeof LegacyRouteWithChildren
 }
 
@@ -229,6 +252,13 @@ declare module '@tanstack/react-router' {
       path: '/legacy'
       fullPath: '/legacy'
       preLoaderRoute: typeof LegacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claude-design': {
+      id: '/claude-design'
+      path: '/claude-design'
+      fullPath: '/claude-design'
+      preLoaderRoute: typeof ClaudeDesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -244,6 +274,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/legacy/'
       preLoaderRoute: typeof LegacyIndexRouteImport
       parentRoute: typeof LegacyRoute
+    }
+    '/claude-design/': {
+      id: '/claude-design/'
+      path: '/'
+      fullPath: '/claude-design/'
+      preLoaderRoute: typeof ClaudeDesignIndexRouteImport
+      parentRoute: typeof ClaudeDesignRoute
     }
     '/legacy/terms-of-service': {
       id: '/legacy/terms-of-service'
@@ -339,6 +376,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ClaudeDesignRouteChildren {
+  ClaudeDesignIndexRoute: typeof ClaudeDesignIndexRoute
+}
+
+const ClaudeDesignRouteChildren: ClaudeDesignRouteChildren = {
+  ClaudeDesignIndexRoute: ClaudeDesignIndexRoute,
+}
+
+const ClaudeDesignRouteWithChildren = ClaudeDesignRoute._addFileChildren(
+  ClaudeDesignRouteChildren,
+)
+
 interface LegacyNewsRouteChildren {
   LegacyNewsArticleIdRoute: typeof LegacyNewsArticleIdRoute
 }
@@ -388,6 +437,7 @@ const LegacyRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClaudeDesignRoute: ClaudeDesignRouteWithChildren,
   LegacyRoute: LegacyRouteWithChildren,
 }
 export const routeTree = rootRouteImport
